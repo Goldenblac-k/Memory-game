@@ -1,4 +1,5 @@
 var dimension = 150
+const gameBoard = document.querySelector('#game-board')
 
 imgs = []
 for (let i = 0; i < 8; i++){
@@ -16,6 +17,22 @@ function shuffle(array){
         cards[j] = tmp
     }
 }
-shuffle(cards)
+
+function initGame(){
+    shuffle(cards)
+
+    cards.forEach(url => {
+        card = document.createElement('div')
+        card.className = "card"
+        card.dataset.value = url
+
+        card.role = 'button'
+        card.tabIndex = '0'
+
+        gameBoard.appendChild(card)
+    });
+}
+
+initGame()
 
 console.log(cards)
